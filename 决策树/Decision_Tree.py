@@ -172,7 +172,8 @@ def retrieveTree(i):
     :param i:
     :return:
     """
-    listOfTrees = [{'no surfacing': {0: 'no', 1: {'flippers': {0: 'no', 1: 'yes'}}}}, {'no surfaceing': {0 : 'no', 1: {0: {'head': {0: 'no', 1: 'yes'}}, 1: 'no'}}}}]
+    listOfTrees = [{'no surfacing': {0: 'no', 1: {'flippers': {0: 'no', 1: 'yes'}}}},
+                   {'no surfaceing': {0 : 'no', 1: {0: {'head': {0: 'no', 1: 'yes'}}, 1: 'no'}}}]
     return listOfTrees[i]
 
 if __name__ == "__main__":
