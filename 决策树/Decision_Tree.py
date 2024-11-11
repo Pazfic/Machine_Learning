@@ -264,9 +264,14 @@ def classify(inputTree, featLabels, testVec):
     return classLabel
 
 if __name__ == '__main__':
-    myDat, myLabels = createDataSet()
-    labels = myLabels[:]
-    myTree = createTree(myDat, myLabels)
-    mytree = retrieveTree(0)
-    createPlot(mytree)
-    print(classify(mytree, labels, [1, 1]))
+    # myDat, myLabels = createDataSet()
+    # labels = myLabels[:]
+    # myTree = createTree(myDat, myLabels)
+    # mytree = retrieveTree(0)
+    # createPlot(mytree)
+    # print(classify(mytree, labels, [1, 1]))
+    fr = open('/home/pazfic/Git_ws/Machine_Learning/决策树/lenses.txt')
+    lenses = [inst.strip().split('\t') for inst in fr.readlines()]
+    lensesLabels = ['age', 'prescript', 'astigmatic', 'tearRate']
+    lensesTree = createTree(lenses, lensesLabels)
+    createPlot(lensesTree)
