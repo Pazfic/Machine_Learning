@@ -265,7 +265,8 @@ def classify(inputTree, featLabels, testVec):
 
 if __name__ == '__main__':
     myDat, myLabels = createDataSet()
-    # mytree = retrieveTree(1)
+    labels = myLabels[:]
     myTree = createTree(myDat, myLabels)
-    print("决策树：", myTree)
-    createPlot(myTree)
+    mytree = retrieveTree(0)
+    createPlot(mytree)
+    print(classify(mytree, labels, [1, 1]))
