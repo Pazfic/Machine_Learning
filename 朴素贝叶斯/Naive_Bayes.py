@@ -93,13 +93,17 @@ def spamTest():
     # 创建训练集
     trainingSet = list(range(50))
     testSet = []
+    # 随机选取10个作为测试集
     for i in range(10):
         randIndex = int(random.uniform(0, len(trainingSet)))
         testSet.append(trainingSet[randIndex])
         del(trainingSet[randIndex])
+    # 建立训练矩阵和类别标签向量
     trainMat = []
     trainClasses = []
+    # 遍历训练集，将文档向量添加到训练矩阵中
     for docIndex in trainingSet:
+        
         trainMat.append(setOfWords2Vec(vocabList, docList[docIndex]))
         trainClasses.append(classList[docIndex])
     p0v, p1v, pSpam = trainNB0(array(trainMat), array(trainClasses))
