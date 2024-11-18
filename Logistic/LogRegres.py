@@ -71,3 +71,32 @@ def plotBestFit(weights):
     plt.ylabel('X2');
     plt.show()
     
+def stocGradAscent(dataMatIn, classLabels, numIter=150):
+    """
+    随机梯度上升算法
+    :param  dataMatIn   输入的数据矩阵
+    :param  classLabels 类别标签
+    :return 权重系数向量
+    """
+    dataMatIn = array(dataMatIn)
+    # 获得输入矩阵的样本数和特征数
+    m, n = shape(dataMatIn)
+    # 初始化权重向量为1向量
+    weights = ones(n)
+    for i in range(numIter):
+        dataIdx = list(range(m))
+        for j in range(m):
+            # 每次迭代都要调整步长
+            alpha = 4 / (1.0 + j + i) + 0.01
+            # 随机选取更新数据
+            randIdx = int(random.uniform(0, len(dataIdx)))
+            # 计算预测值和预测值与实际标签的误差
+            h = sigmoid(sum(dataMatIn[randIdx]*weights))
+            error = classLabels[randIdx] - h
+            # 更新权重向量
+            weights = weights + alpha * error * dataMatIn[randIdx]
+            # 删除已经使用的样本
+            dataIdx.pop(randIdx)
+    return weights
+
+
